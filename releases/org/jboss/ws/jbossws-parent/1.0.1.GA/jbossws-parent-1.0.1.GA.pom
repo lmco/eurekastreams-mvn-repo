@@ -1,0 +1,169 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <name>JBoss Web Services</name>
+  <groupId>org.jboss.ws</groupId>
+  <artifactId>jbossws-parent</artifactId>
+  <packaging>pom</packaging>
+  
+  <version>1.0.1.GA</version>
+  
+  <organization>
+    <name>JBoss, a division of Red Hat</name>
+    <url>http://www.jboss.org</url>
+  </organization>
+  
+  <url>http://www.jboss.org/jbossws</url>
+  
+  <!-- Source Control Management -->
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossws/maven/parent/trunk</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossws/maven/parent/trunk</developerConnection>
+    <url>http://fisheye.jboss.com/viewrep/JBossWS/maven/parent/trunk</url>
+  </scm>
+  
+  <prerequisites>
+    <maven>2.0.9</maven>
+  </prerequisites>
+  
+  <!-- IssueManagement -->
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.jboss.org/jira/browse/JBWS</url>
+  </issueManagement>
+  
+  <!-- licenses -->
+  <licenses>
+    <license>
+      <name>lgpl</name>
+      <url>http://repository.jboss.com/licenses/lgpl.txt</url>
+    </license>
+  </licenses>
+  
+  <!-- Plugins -->
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+          <optimize>true</optimize>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+    
+    <!-- PluginManagement -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.0.2.SP1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <version>1.0-beta-1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <!-- Reporting -->
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+  <!-- Repositories -->
+  <repositories>
+    <repository>
+      <id>maven2.java.net</id>
+      <name>Java.net Repository for Maven 2</name>
+      <url>http://download.java.net/maven/2/</url>
+    </repository>
+    <repository>
+      <id>java.net</id>
+      <url>http://download.java.net/maven/1/</url>
+      <layout>legacy</layout>
+    </repository>
+    <repository>
+      <id>repository.jboss.org</id>
+      <url>http://repository.jboss.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>snapshots.jboss.org</id>
+      <url>http://snapshots.jboss.org/maven2</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+  <!-- PluginRepositories -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repository.jboss.org</id>
+      <url>http://repository.jboss.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>snapshots.jboss.org</id>
+      <url>http://snapshots.jboss.org/maven2</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  
+  <!-- DistributionManagement -->
+  <distributionManagement>
+    <repository>
+      <id>repository.jboss.org</id>
+      <name>JBoss Maven Repository</name>
+      <url>file://${jboss.maven.repository}</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots.jboss.org</id>
+      <name>JBoss Snapshot Repository</name>
+      <url>dav:https://snapshots.jboss.org/maven2</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

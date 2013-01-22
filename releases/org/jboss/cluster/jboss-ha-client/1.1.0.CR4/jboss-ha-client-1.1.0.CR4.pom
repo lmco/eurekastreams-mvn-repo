@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.jboss.cluster</groupId>
+    <artifactId>jboss-cluster</artifactId>
+    <version>1.1.0.GA</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jboss.cluster</groupId>
+  <artifactId>jboss-ha-client</artifactId>
+  <packaging>jar</packaging>
+  <version>1.1.0.CR4</version>
+  <name>JBoss Cluster HA Client Classes</name>
+  <url>http://www.jboss.org</url>
+  <description>A set of client-side classes commonly used by applications that want HA</description>
+  <licenses>
+   <license>
+      <name>lgpl</name>
+      <url>http://repository.jboss.com/licenses/lgpl.txt</url>
+   </license>
+  </licenses>
+  <organization>
+    <name>JBoss, a division of Red Hat, Inc.</name>
+    <url>http://www.jboss.org</url>
+  </organization>
+  
+  <scm>
+    <connection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/cluster/ha-client/tags/1.1.0.CR4</connection>
+  </scm>
+  
+  <properties>
+    <version.jboss.common.core>2.2.7.GA</version.jboss.common.core>
+    <version.jboss.remoting.aspects>1.0.1.CR2</version.jboss.remoting.aspects>
+    <version.jboss.remoting>2.4.0.GA</version.jboss.remoting>
+    <version.jboss.aop>2.0.0.CR13</version.jboss.aop>
+    <version.junit>3.8.1</version.junit>
+  </properties>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <!-- The tagBase property is needed during the release process so that the maven release plugin
+            will create the release tag in the appropriate location. -->
+          <tagBase>https://svn.jboss.org/repos/jbossas/projects/cluster/ha-client/tags</tagBase>
+        </configuration>
+      </plugin>     
+    </plugins>
+  </build>  
+  
+  <dependencies> 
+    <!-- Global dependencies -->
+    <dependency>
+       <groupId>org.jboss</groupId>
+       <artifactId>jboss-common-core</artifactId>
+       <version>${version.jboss.common.core}</version>
+    </dependency>
+    
+    <!-- Only needed if you are using the remoting based interceptors -->
+    <dependency>
+      <groupId>org.jboss.aspects</groupId>
+      <artifactId>jboss-remoting-aspects</artifactId>
+      <version>${version.jboss.remoting.aspects}</version>
+      <!-- <optional>true</optional>-->      
+      <exclusions>
+        <!--  Get logging via jboss-common-core -->
+        <exclusion>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging-spi</artifactId>
+        </exclusion>
+        <!--  Don't pull in the other aspects libraries -->
+        <exclusion>
+          <groupId>org.jboss.aspects</groupId>
+          <artifactId>jboss-transaction-aspects</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss.aspects</groupId>
+          <artifactId>jboss-security-aspects</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.remoting</groupId>
+      <artifactId>jboss-remoting</artifactId>
+      <version>${version.jboss.remoting}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.aop</groupId>
+      <artifactId>jboss-aop</artifactId>
+      <version>${version.jboss.aop}</version>
+      <optional>true</optional>
+      <exclusions>
+        <!--  Don't pull in all the stuff from aop -->
+        <exclusion>
+          <groupId>ant</groupId>
+          <artifactId>ant</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>apache-xerces</groupId>
+          <artifactId>xml-apis</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss</groupId>
+          <artifactId>javassist</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss.microcontainer</groupId>
+          <artifactId>jboss-container</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>jboss</groupId>
+          <artifactId>jboss-common-logging-spi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>jboss</groupId>
+          <artifactId>jboss-common-logging-log4j</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>qdox</groupId>
+          <artifactId>qdox</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>trove</groupId>
+          <artifactId>trove</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
+    <!-- Test dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.junit}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>  
+
+</project>
+

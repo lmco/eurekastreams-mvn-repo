@@ -1,0 +1,15 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>jboss.jbossws</groupId>
+  <artifactId>jboss-jaxrpc</artifactId>
+  <type>jar</type>
+  <version>1.0.4.GA</version>
+  <description>JBossWS an implementation of J2EE Web Services</description>
+  <url>http://labs.jboss.com/portal/jbossws</url>
+  <licenses>
+    <license>
+     <name>lgpl</name>
+     <url>http://repository.jboss.com/licenses/lgpl.txt</url>
+   </license>
+  </licenses>
+</project>

@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.jboss.aspects</groupId>
+    <artifactId>jboss-aspects-build</artifactId>
+    <version>1.0.0.Beta1</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jboss-transaction-aspects</artifactId>
+  <version>1.0.0.Beta1</version>
+  <packaging>jar</packaging>
+  <name>JBoss Transaction Aspects</name>
+  <url>http://www.jboss.org/jbossas/</url>
+  <description>JBoss Transaction Aspects</description>  
+  <build>
+    <resources>
+      <resource>
+        <directory>src/resources/main</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/resources/tests</directory>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>   	   
+    </plugins>
+  </build>
+  <!-- Do not add version information here, use ../build/pom.xml instead -->
+  <dependencies>
+    <!-- Compile Dependencies -->
+    
+      <dependency>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-common-core</artifactId>
+      </dependency>
+    
+      <dependency>
+        <groupId>org.jboss.logging</groupId>
+        <artifactId>jboss-logging-spi</artifactId>
+      </dependency> 
+      
+      <dependency>
+        <groupId>org.jboss.aop</groupId>
+        <artifactId>jboss-aop</artifactId>
+      </dependency> 
+
+      <dependency>
+        <groupId>org.jboss.javaee</groupId>
+        <artifactId>jboss-transaction-api</artifactId>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-transaction-spi</artifactId>
+      </dependency>
+
+      
+    <!-- Test dependencies -->
+  </dependencies>
+
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-aspects/tags/jboss-transaction-aspects-1.0.0.Beta1</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-aspects/tags/jboss-transaction-aspects-1.0.0.Beta1</developerConnection>
+    <url>http://viewvc.jboss.org/cgi-bin/viewvc.cgi/jbossas/projects/jboss-aspects/tags/jboss-transaction-aspects-1.0.0.Beta1</url>
+  </scm>
+</project>

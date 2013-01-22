@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>wutka-dtdparser</groupId>
+  <artifactId>dtdparser121</artifactId>
+  <name>dtdparser121</name>
+  <version>1.2.1</version>
+  <url>http://www.wutka.com/dtdparser.html</url>
+  <description>DTD parser for Java</description>
+  <licenses>
+   <license>
+     <name>lgpl</name>
+     <url>http://www.gnu.org/licenses/lgpl.txt</url>
+   </license>
+  </licenses>      
+</project>

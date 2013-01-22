@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>3</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jboss.aop</groupId>
+  <artifactId>jboss-aop-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>2.0.0.CR8</version>
+  <description>JBoss AOP</description>
+  <name>JBoss AOP Framework</name>
+  <url>http://labs.jboss.org/jbossaop/</url>
+  <scm>
+    <connection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/aop/trunk/</connection>
+  </scm>
+  <modules>
+    <module>aop</module>
+    <module>aspects</module>
+    <module>asintegration</module>
+  </modules>
+</project>

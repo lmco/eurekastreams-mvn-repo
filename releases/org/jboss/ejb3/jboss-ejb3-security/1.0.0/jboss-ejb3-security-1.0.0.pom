@@ -1,0 +1,153 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- Define Parent -->
+  <parent>
+    <groupId>org.jboss.ejb3</groupId>
+    <artifactId>jboss-ejb3-build</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../build/pom.xml</relativePath>
+  </parent>
+
+  <!-- Maven POM Model Version -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Artifact Information -->
+  <groupId>org.jboss.ejb3</groupId>
+  <artifactId>jboss-ejb3-security</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>JBoss EJB 3.0 Security</name>
+  <url>http://labs.jboss.com/jbossejb3/</url>
+  <description>The JBoss EJB 3.0 Security classes</description>
+  
+  <build>
+  
+    <plugins>
+    
+      <!-- Assembly Plugin -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2-beta-1</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id><!-- this is used for inheritance merges -->
+            <phase>package</phase>
+            <goals>
+              <goal>attached</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- JBoss EJB3 Client JAR -->
+          <descriptors>
+            <descriptor>jboss-ejb3-security-client.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+    
+    </plugins>
+  
+  </build>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.jboss.aspects</groupId>
+      <artifactId>jboss-current-invocation-aspects</artifactId>
+      <version>1.0.0.CR1</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.ejb3</groupId>
+      <artifactId>jboss-ejb3-interceptors</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    
+    <!-- JBoss Security SPI -->
+    <dependency>
+      <groupId>org.jboss.security</groupId>
+      <artifactId>jboss-security-spi</artifactId>
+      <version>2.0.2.SP1</version>
+    </dependency>
+
+    <!-- JBoss Security Impl -->
+    <dependency>
+      <groupId>org.jboss.security</groupId>
+      <artifactId>jbosssx</artifactId>
+      <version>2.0.2.SP1</version>
+    </dependency>
+
+    <!-- JACC API -->
+    <dependency>
+      <groupId>org.jboss.javaee</groupId>
+      <artifactId>jboss-jacc-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.ejb3</groupId>
+      <artifactId>jboss-ejb3-ext-api</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+   
+    <dependency>
+      <groupId>org.jboss.ejb3</groupId>
+      <artifactId>jboss-ejb3-ext-api-impl</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <!-- JBoss AOP -->
+    <dependency>
+      <groupId>org.jboss.aop</groupId>
+      <artifactId>jboss-aop</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>jboss</groupId>
+          <artifactId>jboss-common-logging-spi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>jboss</groupId>
+          <artifactId>jboss-logging-spi</artifactId>
+        </exclusion>       
+      </exclusions>
+    </dependency>
+
+    <!-- EJB3 Metadata -->
+    <dependency>
+      <groupId>org.jboss.ejb3</groupId>
+      <artifactId>jboss-ejb3-metadata</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <!-- JBoss Common Core -->
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-common-core</artifactId>
+    </dependency>
+
+    <!-- JBoss Logging SPI -->
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging-spi</artifactId>
+    </dependency>
+
+    <!-- JBoss MetaData -->
+    <dependency>
+      <groupId>org.jboss.metadata</groupId>
+      <artifactId>jboss-metadata</artifactId>
+    </dependency>
+
+    <!-- JUnit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/ejb3/tags/jboss-ejb3-security-1.0.0</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/ejb3/tags/jboss-ejb3-security-1.0.0</developerConnection>
+    <url>http://anonsvn.jboss.org/repos/jbossas/projects/ejb3/tags/jboss-ejb3-security-1.0.0</url>
+  </scm>
+</project>

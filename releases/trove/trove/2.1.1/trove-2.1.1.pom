@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>trove</groupId>
+  <artifactId>trove</artifactId>
+  <name>trove</name>
+  <version>2.1.1</version>
+  <url>http://trove4j.sourceforge.net</url>
+  <description>High performance collections for Java</description>
+  <licenses>
+   <license>
+     <name>trove</name>
+     <url>http://repository.jboss.org/licenses/trove.txt</url>
+   </license>
+  </licenses>      
+</project>

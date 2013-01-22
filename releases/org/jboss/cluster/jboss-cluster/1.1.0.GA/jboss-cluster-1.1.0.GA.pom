@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+A top level maven pom that expects a structure like: 
+  build/pom.xml
+  ha-client/pom.xml
+  ha-server-api/pom.xml
+
+This can be done using:  
+svn co https://svn.jboss.org/repos/jbossas/projects/cluster/build/trunk/ build
+svn co https://svn.jboss.org/repos/jbossas/projects/cluster/ha-client/trunk ha-client
+svn co https://svn.jboss.org/repos/jbossas/projects/cluster/ha-server-api/trunk/ ha-server-api
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>3</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jboss.cluster</groupId>
+  <artifactId>jboss-cluster</artifactId>
+  <packaging>pom</packaging>
+  <version>1.1.0.GA</version>
+  <name>JBoss Cluster Build</name>
+  <url>http://www.jboss.org</url>
+  <description>JBoss Cluster</description>
+  
+  <scm>
+    <connection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/cluster/build/tags/1.1.0.GA</connection>
+  </scm>
+  
+  <properties>
+    <version.junit>3.8.1</version.junit>
+  </properties>
+  
+  <build>
+    <finalName>${artifactId}</finalName>  
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <printSummary>true</printSummary>
+          <disableXmlReport>false</disableXmlReport>
+          <!--<testFailureIgnore>true</testFailureIgnore>-->
+          <includes>
+            <include>**/*TestCase.java</include>
+          </includes>
+        </configuration>
+      </plugin> 
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <!-- The tagBase property is needed during the release process so that the maven release plugin
+            will create the release tag in the appropriate location. -->
+          <tagBase>https://svn.jboss.org/repos/jbossas/projects/cluster/build/tags</tagBase>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>jboss.maven-plugins</groupId>
+        <artifactId>jboss-deploy-maven-plugin</artifactId>
+        <version>1.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jboss-deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- In order to use this setting jboss.repository.root must be set on the command line or in
+          settings.xml.  More information can be found here: http://wiki.jboss.org/wiki/Wiki.jsp?page=JBossBuildMaven -->
+          <jbossDeployRoot>${jboss.repository.root}</jbossDeployRoot>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <repositories>
+    <repository>
+      <id>repository.jboss.org</id>
+      <name>JBoss Repository</name>
+      <layout>default</layout>
+      <url>http://repository.jboss.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>snapshots.jboss.org</id>
+      <name>JBoss Snapshots Repository</name>
+      <layout>default</layout>
+      <url>http://snapshots.jboss.org/maven2/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+  </repositories>
+  
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>dependencies</report>
+              <report>issue-tracking</report>
+              <report>license</report>
+              <report>scm</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+</project>

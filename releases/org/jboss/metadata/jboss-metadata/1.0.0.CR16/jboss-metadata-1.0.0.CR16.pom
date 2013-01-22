@@ -1,0 +1,179 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>4.0.CR1</version>
+  </parent>
+  <groupId>org.jboss.metadata</groupId>
+  <artifactId>jboss-metadata</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0.0.CR16</version>
+  <name>JBoss Metadata</name>
+  <url>http://www.jboss.org</url>
+  <description>The common JavaEE metadata classes</description>
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/metadata/tags/1.0.0.CR16</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/metadata/tags/1.0.0.CR16</developerConnection>
+  </scm>
+
+  <build>
+    <outputDirectory>${profile.outputDirectory}</outputDirectory>
+    <testOutputDirectory>${profile.testOutputDirectory}</testOutputDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.4.3</version>
+        <configuration>
+          <printSummary>true</printSummary>
+          <disableXmlReport>false</disableXmlReport>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <includes>
+            <include>**/*TestCase.java</include>
+          </includes>          
+        </configuration>
+      </plugin>      
+    </plugins>
+  </build>
+
+  <!-- 
+    Eclipse settings have been removed from parent. This needs to be
+    done via an eclipse profile.
+    http://www.jboss.com/index.html?module=bb&op=viewtopic&p=4085896#4085896 
+    -->
+  <profiles>
+    <profile>
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <profile.outputDirectory>target/classes</profile.outputDirectory>
+        <profile.testOutputDirectory>target/tests-classes</profile.testOutputDirectory>
+      </properties>
+    </profile>
+    
+    <profile>
+      <id>eclipse</id>
+      <properties>
+        <profile.outputDirectory>eclipse-target/classes</profile.outputDirectory>
+        <profile.testOutputDirectory>eclipse-target/tests-classes</profile.testOutputDirectory>
+      </properties>
+    </profile>
+  </profiles>
+
+  <!-- Compile Dependencies -->
+  <dependencies>
+
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging-spi</artifactId>
+      <version>2.0.5.GA</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-common-core</artifactId>
+      <version>2.2.8.GA</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.ejb3</groupId>
+      <artifactId>jboss-ejb3-ext-api</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.javaee</groupId>
+      <artifactId>jboss-ejb-api</artifactId>
+      <version>3.0.0.GA</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.javaee</groupId>
+      <artifactId>jboss-jms-api</artifactId>
+      <version>1.1.0.GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>ejb3-persistence</artifactId>
+      <version>1.0.2.GA</version>
+    </dependency>
+      
+    <dependency>
+      <groupId>org.jboss.javaee</groupId>
+      <artifactId>jboss-transaction-api</artifactId>
+      <version>1.0.1.GA</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.ws</groupId>
+      <artifactId>jbossws-spi</artifactId>
+      <version>1.0.6.GA</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>jboss.jbossws</groupId>
+      <artifactId>jboss-jaxws</artifactId>
+      <version>3.0.1-native-2.0.4.GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jbossxb</artifactId>
+      <version>2.0.0.GA</version>
+      <exclusions>
+        <exclusion>
+          <groupId>jboss</groupId>
+          <artifactId>jboss-common-logging-spi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+        </exclusion>          
+      </exclusions>       
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-vfs</artifactId>
+      <version>2.0.0.CR1</version>    
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-mdr</artifactId>
+      <version>2.0.0.GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>sun-jaxb</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.1.4</version>
+   </dependency>
+      
+    <dependency>
+      <groupId>apache-xerces</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>2.9.1</version>    
+    </dependency>
+    
+    <!-- Test Dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.4</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.test</groupId>
+      <artifactId>jboss-test</artifactId>
+      <version>1.1.2.GA</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>

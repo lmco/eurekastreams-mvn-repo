@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- Define Parent -->
+  <parent>
+    <groupId>org.jboss.aspects</groupId>
+    <artifactId>jboss-aspects-build</artifactId>
+    <version>1.0.1.CR2</version>
+    <relativePath>../build</relativePath>
+  </parent>
+
+  <!-- Maven POM Model Version -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Artifact Information -->
+  <artifactId>jboss-current-invocation-aspects</artifactId>
+  <version>1.0.0.CR1</version>
+  <packaging>jar</packaging>
+  <name>JBoss Current Invocation Aspects</name>
+  <url>http://www.jboss.org/jbossas</url>
+  <description>JBoss Current Invocation Aspects</description>
+
+  <!-- Build Configuration -->
+  <build>
+  
+    <!-- TODO: Remove these when parent build has proper default -->
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    
+    <plugins>
+    
+      <!-- Surefire -->
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <printSummary>true</printSummary>
+          <testFailureIgnore>false</testFailureIgnore>
+          <includes>
+            <include>**/*TestCase.java</include>
+            <include>**/*TestSuite.java</include>
+          </includes>
+          <forkMode>always</forkMode>
+          <argLine>-Djboss.aop.verbose=true</argLine>
+          <argLine>-javaagent:${project.build.directory}/dependencies/lib/jboss-aop-jdk50.jar</argLine>
+        </configuration>
+      </plugin>
+      
+      <!-- Dependency Plugin Configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-jboss-test</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>jboss.aop</groupId>
+                  <artifactId>jboss-aop-jdk50</artifactId>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project.build.directory}/dependencies/lib</outputDirectory>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+    </plugins>
+    
+  </build>
+
+  <!-- Dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging-spi</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.remoting</groupId>
+      <artifactId>jboss-remoting</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.aop</groupId>
+      <artifactId>jboss-aop</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>jboss.aop</groupId>
+      <artifactId>jboss-aop-jdk50</artifactId>
+      <version>2.0.0.CR8</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.aspects</groupId>
+      <artifactId>jboss-aspects-common</artifactId>
+      <version>1.0.0.Beta1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.aspects</groupId>
+      <artifactId>jboss-aspects-test</artifactId>
+      <version>1.0.0.Beta1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.microcontainer</groupId>
+      <artifactId>jboss-kernel</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.man</groupId>
+      <artifactId>jboss-managed</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+  </dependencies>
+
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-aspects/tags/jboss-current-invocation-aspects-1.0.0.CR1</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-aspects/tags/jboss-current-invocation-aspects-1.0.0.CR1</developerConnection>
+    <url>http://viewvc.jboss.org/cgi-bin/viewvc.cgi/jbossas/projects/jboss-aspects/tags/jboss-current-invocation-aspects-1.0.0.CR1</url>
+  </scm>
+</project>

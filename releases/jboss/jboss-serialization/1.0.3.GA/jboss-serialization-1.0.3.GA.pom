@@ -1,0 +1,14 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>jboss</groupId>
+  <artifactId>jboss-serialization</artifactId>
+  <version>1.0.3.GA</version>
+  <url>http://labs.jboss.com/portal/index.html&amp;ctrl:id=page.default.info&amp;project=serialization</url>
+  <description> JBossSerialization is a new approach to java-serialization.</description>
+  <licenses>
+   <license>
+     <name>lgpl</name>
+     <url>http://repository.jboss.com/licenses/lgpl.txt</url>
+   </license>
+  </licenses>     
+</project>

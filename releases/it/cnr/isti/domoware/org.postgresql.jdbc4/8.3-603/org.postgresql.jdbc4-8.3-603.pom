@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.cnr.isti.domoware</groupId>
+  <artifactId>org.postgresql.jdbc4</artifactId>
+  <packaging>bundle</packaging>
+  <version>8.3-603</version>
+</project>

@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <groupId>org.jboss.ejb3</groupId>
+    <artifactId>jboss-ejb3-build</artifactId>
+    <version>1.0.1</version>
+    <relativePath>../build/pom.xml</relativePath>
+  </parent>
+
+  <!-- Maven POM Model Version -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Artifact Information -->
+  <artifactId>jboss-ejb3-timerservice-spi</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0.0</version>
+  <name>JBoss EJB 3.x TimerService SPI</name>
+  <description>JBoss EJB 3.x TimerService SPI</description>
+  <url>http://labs.jboss.com/jbossejb3/</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.javaee</groupId>
+      <artifactId>jboss-ejb-api</artifactId>
+    </dependency>    
+  </dependencies>
+
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/ejb3/tags/jboss-ejb3-timerservice-spi-1.0.0</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/ejb3/tags/jboss-ejb3-timerservice-spi-1.0.0</developerConnection>
+    <url>http://anonsvn.jboss.org/repos/jbossas/projects/ejb3/tags/jboss-ejb3-timerservice-spi-1.0.0</url>
+  </scm>
+</project>

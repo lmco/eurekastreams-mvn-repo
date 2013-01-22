@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>3</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jboss-common-core</artifactId>
+  <version>2.2.4.GA</version>
+  <packaging>jar</packaging>
+  <name>JBoss Common Classes</name>
+  <url>http://www.jboss.org</url>
+  <description>JBoss Common Core Utility classes</description>
+  <scm>
+    <connection>scm:svn:https://svn.jboss.org/repos/common/common-core/tags/2.2.4.GA</connection>
+  </scm>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <!-- The tagBase property is needed during the release process so that the maven release plugin
+            will create the release tag in the appropriate location. -->
+          <tagBase>https://svn.jboss.org/repos/common/common-core/tags</tagBase>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>jboss.maven-plugins</groupId>
+        <artifactId>jboss-deploy-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <repositories>
+    <repository>
+      <id>repository.jboss.org</id>
+      <name>JBoss Repository</name>
+      <layout>default</layout>
+      <url>http://repository.jboss.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>snapshots.jboss.org</id>
+      <name>JBoss Snapshot Repository</name>
+      <layout>default</layout>
+      <url>http://snapshots.jboss.org/maven2/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+  <dependencies>
+  
+    <dependency>
+      <groupId>apache-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>2.0.2</version>
+      <scope>compile</scope>
+      <optional>true</optional> <!-- org.jboss.net.protocol.http.DavURLLister -->
+    </dependency>
+    
+    <dependency>
+      <groupId>apache-slide</groupId>
+      <artifactId>webdavlib</artifactId>
+      <version>2.0</version>
+      <scope>compile</scope>
+      <optional>true</optional> <!-- org.jboss.net.protocol.http.DavURLLister -->
+    </dependency>
+
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-common-logging-spi</artifactId>
+      <version>2.0.4.GA</version>
+      <scope>compile</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-test</artifactId>
+      <version>1.0.3.GA</version>
+      <scope>test</scope>
+      <exclusions>
+        <!-- Cyclical dependency, 27/03/2008
+        jboss:jboss-test->jboss:jboss-logging-log4j->jboss:jboss-common-core
+      
+         +- jboss:jboss-test:jar:1.0.3.GA:test
+         |  +- org.apache.ant:ant-junit:jar:1.7.0:test
+         |  |  \- org.apache.ant:ant:jar:1.7.0:test
+         |  |     \- org.apache.ant:ant-launcher:jar:1.7.0:test
+         |  +- apache-xerces:xml-apis:jar:2.7.1:test
+         |  +- apache-httpclient:commons-httpclient:jar:2.0.2:test
+         |  +- oswego-concurrent:concurrent:jar:1.3.4:test
+         |  +- jboss:jboss-logging-spi:jar:2.0.2.GA:test
+         |  +- jboss.profiler.jvmti:jboss-profiler-jvmti:jar:1.0.0.CR5:tes
+         |  +- jboss:jboss-logging-log4j:jar:2.0.2.GA:test
+         |  |  +- jboss:jboss-common-core:jar:2.0.2.GA:test
+         |  |  |  \- apache-slide:webdavlib:jar:2.0:test
+         |  |  \- apache-log4j:log4j:jar:1.2.8:test
+         |  \- log4j:log4j:jar:1.2.14:test
+        -->        
+        <exclusion>
+          <groupId>jboss</groupId>
+          <artifactId>jboss-common-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>apache-xerces</groupId>
+          <artifactId>xml-apis</artifactId>
+        </exclusion>        
+      </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+  </dependencies>  
+  
+</project>
